@@ -1,0 +1,8 @@
+		,
+		"grammars": [
+			{
+				"language": "ionscript",
+				"scopeName": "source.ionscript",
+				"path": "./syntaxes/ionscript.tmLanguage"
+			}
+		]
