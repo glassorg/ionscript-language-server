@@ -59,13 +59,15 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "yarn run build",
+		"vscode:prepublish": "npm run build",
 		"package": "vsce package",
 		"build": "tsc -b",
-		"build-yaml": "yarn js-yaml syntaxes/ionscript.tmLanguage.yaml > syntaxes/ionscript.tmLanguage",
+		"build-yaml": "npm js-yaml syntaxes/ionscript.tmLanguage.yaml > syntaxes/ionscript.tmLanguage",
 		"watch": "tsc -b -w",
-		"postinstall": "cd client && yarn install && cd ../server && yarn install && cd ..",
-		"test": "sh ./scripts/e2e.sh"
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+		"test": "sh ./scripts/e2e.sh",
+		"clean": "rm -rf node_modules/ client/out/ client/node_modules/ server/out/ server/node_modules/",
+		"install-dev": "code --install-extension ionscript-language-server-1.0.0.vsix"
 	},
 	"devDependencies": {
 		"@types/mocha": "^8.0.3",
@@ -77,6 +79,8 @@
 		"vsce": "^1.81.1"
 	},
 	"dependencies": {
+		"@glas/traverse": "^1.0.4",
+		"ionscript": "^0.2.8",
 		"js-yaml": "^3.14.0"
 	}
 }
