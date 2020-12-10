@@ -6,9 +6,9 @@
 	"version": "1.0.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-extension-samples"
+		"url": "https://github.com/glassorg/ionscript-language-server.git"
 	},
-	"publisher": "vscode-samples",
+	"publisher": "krisnye",
 	"categories": [],
 	"keywords": [
 		"multi-root ready"
@@ -59,7 +59,8 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "yarn run compile",
+		"vscode:prepublish": "yarn run build",
+		"package": "vsce package",
 		"build": "tsc -b",
 		"build-yaml": "yarn js-yaml syntaxes/ionscript.tmLanguage.yaml > syntaxes/ionscript.tmLanguage",
 		"watch": "tsc -b -w",
@@ -72,7 +73,8 @@
 		"@typescript-eslint/parser": "^2.3.0",
 		"eslint": "^6.4.0",
 		"mocha": "^8.1.1",
-		"typescript": "^4.0.2"
+		"typescript": "^4.0.2",
+		"vsce": "^1.81.1"
 	},
 	"dependencies": {
 		"js-yaml": "^3.14.0"
