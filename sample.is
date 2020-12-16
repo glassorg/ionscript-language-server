@@ -1,5 +1,5 @@
 
-let x = 12
+let x: String = "foo"
 let foo = () =>
     if a > 0
         console.log("foo")

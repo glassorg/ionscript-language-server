@@ -7,9 +7,9 @@
     },
     // symbols used as brackets
     "brackets": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"]
+        // ["{", "}"],
+        // ["[", "]"],
+        // ["(", ")"] // Wierdly, this is freezing vscode on `export default foo() => 12` when removing the foo
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [

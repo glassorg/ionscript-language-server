@@ -67,7 +67,8 @@
 		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
 		"test": "sh ./scripts/e2e.sh",
 		"clean": "rm -rf node_modules/ client/out/ client/node_modules/ server/out/ server/node_modules/",
-		"install-dev": "code --install-extension ionscript-language-server-1.0.0.vsix"
+		"install-vscode": "code --install-extension ionscript-language-server-1.0.0.vsix",
+		"rebuild": "npm run build && npm run package && npm run install-vscode"
 	},
 	"devDependencies": {
 		"@types/mocha": "^8.0.3",
@@ -80,7 +81,6 @@
 	},
 	"dependencies": {
 		"@glas/traverse": "^1.0.4",
-		"ionscript": "^0.2.8",
 		"js-yaml": "^3.14.0"
 	}
 }

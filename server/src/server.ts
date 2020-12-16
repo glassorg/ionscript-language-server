@@ -19,7 +19,7 @@ import {
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
-import Compiler, { Options } from "ionscript/lib/compiler/Compiler";
+
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -135,6 +135,12 @@ documents.onDidChangeContent(change => {
 });
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
+	// we are requiring from local system instead of bundling with the language server
+	const root = require("../../common.js").getGlobalModuleRoot();
+	const { default: Compiler, Options } = require(root + "ionscript/lib/compiler/Compiler");
+
+	// import Compiler, { Options } from "ionscript/lib/compiler/Compiler";
+
 	// In this simple example we get the settings for every validate run.
 	let settings = await getDocumentSettings(textDocument.uri);
 	let diagnostics: Diagnostic[] = [];
@@ -148,7 +154,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let options = new Options([], "null", "namespace", debug, emit);
 	let logger = () => {};
 	let compiler = new Compiler(logger);
-	let errors = compiler.compile(options, { [textDocument.uri]: text });
+	let { errors } = compiler.compile(options, { [textDocument.uri]: text });
 	for (let e of errors) {
 		if (e.location) {
 			let diagnostic: Diagnostic = {
